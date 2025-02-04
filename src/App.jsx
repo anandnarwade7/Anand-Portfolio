@@ -13,12 +13,55 @@ import {
   BookOpen,
   Award,
   FileDown,
+  PhoneCall,
 } from "lucide-react";
 import lawTech from "./assets/lawtech.jpeg";
 import Trendads from "./assets/Trendads.jpeg";
-import logo from "./assets/logo.png";
+import logo from "./assets/logo1.png";
 function App() {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    mobile: "",
+    message: "",
+  });
+  const [errors, setErrors] = useState({});
+
+  const validateForm = () => {
+    let newErrors = {};
+    if (!formData.name) newErrors.name = "Name is required";
+    if (!formData.email) {
+      newErrors.email = "Email is required";
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+      newErrors.email = "Invalid email format";
+    }
+    if (!formData.mobile) {
+      newErrors.mobile = "Mobile number is required";
+    } else if (!/^\d{10}$/.test(formData.mobile)) {
+      newErrors.mobile = "Invalid mobile number";
+    }
+    if (!formData.message) newErrors.message = "Message is required";
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+
+    if (errors[name]) {
+      setErrors({ ...errors, [name]: "" });
+    }
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (validateForm()) {
+      e.target.submit();
+    }
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -50,37 +93,22 @@ function App() {
               className="flex items-center gap-2 cursor-pointer"
               onClick={() => scrollToSection("hero")}
             >
-              <img src={logo} alt="logo" className="w-[8rem]" />
+              <img src={logo} alt="logo" className="w-[4rem]" />
             </div>
 
-            {/* Navigation Links */}
+            {/* Desktop Navigation Links */}
             <div className="hidden md:flex items-center gap-8">
+              {["about", "experience", "projects", "skills"].map((section) => (
+                <button
+                  key={section}
+                  onClick={() => scrollToSection(section)}
+                  className="text-gray-300 hover:text-orange-500 transition-colors"
+                >
+                  {section.charAt(0).toUpperCase() + section.slice(1)}
+                </button>
+              ))}
               <button
-                onClick={() => scrollToSection("about")}
-                className="text-gray-300 hover:text-orange-500 transition-colors"
-              >
-                About
-              </button>
-              <button
-                onClick={() => scrollToSection("experience")}
-                className="text-gray-300 hover:text-orange-500 transition-colors"
-              >
-                Experience
-              </button>
-              <button
-                onClick={() => scrollToSection("projects")}
-                className="text-gray-300 hover:text-orange-500 transition-colors"
-              >
-                Projects
-              </button>
-              <button
-                onClick={() => scrollToSection("skills")}
-                className="text-gray-300 hover:text-orange-500 transition-colors"
-              >
-                Skills
-              </button>
-              <button
-                onClick={() => scrollToSection("contact")}
+                onClick={() => scrollToSection("mycontact")}
                 className="px-4 py-2 bg-orange-500 text-white rounded-full hover:bg-orange-600 transition-colors"
               >
                 Contact
@@ -88,23 +116,65 @@ function App() {
             </div>
 
             {/* Mobile Menu Button */}
-            <button className="md:hidden text-white">
-              <svg
-                className="w-6 h-6"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M4 6h16M4 12h16M4 18h16"
-                />
-              </svg>
+            <button
+              className="md:hidden text-white"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+            >
+              {isMenuOpen ? (
+                <svg
+                  className="w-6 h-6"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M6 18L18 6M6 6l12 12"
+                  />
+                </svg>
+              ) : (
+                <svg
+                  className="w-6 h-6"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M4 6h16M4 12h16M4 18h16"
+                  />
+                </svg>
+              )}
             </button>
           </div>
         </div>
+
+        {/* Mobile Menu */}
+        {isMenuOpen && (
+          <div className="md:hidden absolute top-20 left-0 w-full bg-gray-900 shadow-lg">
+            <div className="flex flex-col items-center gap-6 py-4">
+              {["about", "experience", "projects", "skills"].map((section) => (
+                <button
+                  key={section}
+                  onClick={() => scrollToSection(section)}
+                  className="text-gray-300 hover:text-orange-500 transition-colors"
+                >
+                  {section.charAt(0).toUpperCase() + section.slice(1)}
+                </button>
+              ))}
+              <button
+                onClick={() => scrollToSection("mycontact")}
+                className="px-4 py-2 bg-orange-500 text-white rounded-full hover:bg-orange-600 transition-colors"
+              >
+                Contact
+              </button>
+            </div>
+          </div>
+        )}
       </nav>
 
       {/* Hero */}
@@ -583,6 +653,7 @@ function App() {
               className="space-y-6"
               action="https://formspree.io/f/xwpvbkwl"
               method="POST"
+              onSubmit={handleSubmit}
             >
               <div>
                 <label htmlFor="name" className="block text-white mb-2">
@@ -591,11 +662,16 @@ function App() {
                 <input
                   type="text"
                   id="name"
-                  name="Name"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
                   className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white focus:outline-none focus:border-orange-500"
                   placeholder="Your name"
                   maxLength={250}
                 />
+                {errors.name && (
+                  <p className="text-red-500 text-sm">{errors.name}</p>
+                )}
               </div>
               <div>
                 <label htmlFor="email" className="block text-white mb-2">
@@ -604,11 +680,16 @@ function App() {
                 <input
                   type="email"
                   id="email"
-                  name="Email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
                   className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white focus:outline-none focus:border-orange-500"
                   placeholder="your@email.com"
                   maxLength={250}
                 />
+                {errors.email && (
+                  <p className="text-red-500 text-sm">{errors.email}</p>
+                )}
               </div>
               <div>
                 <label htmlFor="email" className="block text-white mb-2">
@@ -617,10 +698,15 @@ function App() {
                 <input
                   type="number"
                   id="mobile"
-                  name="Mobile"
+                  name="mobile"
+                  value={formData.mobile}
+                  onChange={handleChange}
                   className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white focus:outline-none focus:border-orange-500"
                   placeholder="87XXXXXX90"
                 />
+                {errors.mobile && (
+                  <p className="text-red-500 text-sm">{errors.mobile}</p>
+                )}
               </div>
               <div>
                 <label htmlFor="message" className="block text-white mb-2">
@@ -629,10 +715,15 @@ function App() {
                 <textarea
                   id="message"
                   rows={6}
-                  name="Message"
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
                   className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white focus:outline-none focus:border-orange-500"
                   placeholder="Your message"
                 ></textarea>
+                {errors.message && (
+                  <p className="text-red-500 text-sm">{errors.message}</p>
+                )}
               </div>
               <button
                 type="submit"
@@ -641,6 +732,36 @@ function App() {
                 Send Message
               </button>
             </form>
+
+            <div
+              id="mycontact"
+              className="mt-12 bg-gray-800/50 p-8 rounded-xl border border-gray-700"
+            >
+              <h3 className="text-xl font-semibold text-white mb-6 text-center">
+                Contact Information
+              </h3>
+              <div className="flex flex-col md:flex-row md:items-center justify-center gap-5">
+                <div className="flex items-center gap-3 text-gray-300">
+                  <Mail className="w-5 h-5 text-orange-500" />
+                  <a
+                    target="_blank"
+                    href="https://mail.google.com/mail/?view=cm&fs=1&to=anandn7798@gmail.com&su=Hello%20Anand&body=Hi%20Anand,%0D%0A%0D%0A I wanted to connect with you.%0D%0A%0D%0AThanks!"
+                    className="hover:text-orange-500 transition-colors"
+                  >
+                    anandn7798@gmail.com
+                  </a>
+                </div>
+                <div className="flex items-center gap-3 text-gray-300">
+                  <PhoneCall className="w-5 h-5 text-orange-500" />
+                  <a
+                    href="tel:8600818968"
+                    className="hover:text-orange-500 transition-colors"
+                  >
+                    +91 8600818968
+                  </a>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -653,7 +774,7 @@ function App() {
               className="flex items-center gap-2 cursor-pointer"
               onClick={() => scrollToSection("hero")}
             >
-              <img src={logo} alt="logo" className="w-[8rem]" />
+              <img src={logo} alt="logo" className="w-[5rem]" />
             </div>
 
             <div className="flex gap-4">
