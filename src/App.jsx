@@ -294,20 +294,10 @@ function App() {
             </div>
             <div>
               <p className="text-gray-300 text-base mb-6">
-                I am a developer with expertise in building scalable and
-                high-performance Java applications. My main focus has been on
-                leveraging Spring Boot, Micronaut, and RESTful APIs, Webservices
-                to create efficient and secure backend solutions. With a strong
-                foundation in Java (Core Java 8+), Hibernate, JPA, and SQL, I
-                specialize in optimizing databases, enhancing system
-                performance, and ensuring seamless application functionality.{" "}
+                I am a Java developer specializing in building scalable and high-performance applications. My expertise lies in leveraging Spring Boot, Micronaut, RESTful APIs, Webservices, and Microservices to develop efficient and secure backend solutions. With a strong foundation in Core Java (Java 8+), Hibernate, JPA, and SQL, I focus on database optimization, system performance enhancement, and ensuring seamless application functionality.{" "}
               </p>
               <p className="text-gray-300 text-base mb-6">
-                I am passionate about coding, problem-solving, and optimizing
-                performance, security, and scalability. I believe that logic and
-                efficiency should always take precedence over specific
-                programming languages, and I am committed to finding the most
-                cost-effective and innovative solutions to complex problems.
+               I am passionate about coding, problem-solving, and architecting solutions that prioritize performance, security, and scalability. I believe that logic and efficiency should always take precedence over specific programming languages, and I am committed to developing cost-effective, innovative, and maintainable solutions to tackle complex challenges.
               </p>
               <div className="flex flex-col lg:flex-row lg:gap-16">
                 <div className="flex items-center gap-2 text-gray-300">
