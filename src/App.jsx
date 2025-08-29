@@ -197,7 +197,7 @@ function App() {
                 <p className="text-4xl text-white">Hello, I'm</p>
                 <h1 className="text-2xl lg:text-6xl font-bold text-orange-500 mb-6">
                   Anand Narwade
-                  <span className="block text-white">Java Developer</span>
+                  <span className="block text-white">Java Software Developer</span>
                 </h1>
 
                 <p className="text-gray-400 text-lg mb-12 max-w-2xl mx-auto lg:mx-0">
@@ -258,7 +258,7 @@ function App() {
                       Backend Development
                     </h3>
                     <p className="text-gray-400">
-                      Spring Boot, Microservices, RESTful APIs
+                      Spring Boot, Microservices, RESTful APIs, Webservices
                     </p>
                   </div>
                   <div className="bg-gray-800/50 backdrop-blur-sm p-8 rounded-2xl border border-gray-700/50 transform hover:-translate-y-2 transition-transform duration-300">
@@ -266,7 +266,7 @@ function App() {
                     <h3 className="text-white font-semibold text-xl mb-3">
                       Database
                     </h3>
-                    <p className="text-gray-400">PostgreSQL, MongoDB, Redis</p>
+                    <p className="text-gray-400">PostgreSQL, MySQL, Redis</p>
                   </div>
                 </div>
 
@@ -294,7 +294,7 @@ function App() {
             </div>
             <div>
               <p className="text-gray-300 text-base mb-6">
-                I am a Java developer specializing in building scalable and high-performance applications. My expertise lies in leveraging Spring Boot, Micronaut, RESTful APIs, Webservices, and Microservices to develop efficient and secure backend solutions. With a strong foundation in Core Java (Java 8+), Hibernate, JPA, and SQL, I focus on database optimization, system performance enhancement, and ensuring seamless application functionality.{" "}
+                I am a Java software developer specializing in building scalable and high-performance applications. My expertise lies in leveraging Spring Boot, Micronaut, RESTful APIs, Webservices, and Microservices to develop efficient and secure backend solutions. With a strong foundation in Core Java (Java 8+), Hibernate, JPA, and SQL, I focus on database optimization, system performance enhancement, and ensuring seamless application functionality.{" "}
               </p>
               <p className="text-gray-300 text-base mb-6">
                I am passionate about coding, problem-solving, and architecting solutions that prioritize performance, security, and scalability. I believe that logic and efficiency should always take precedence over specific programming languages, and I am committed to developing cost-effective, innovative, and maintainable solutions to tackle complex challenges.
@@ -331,7 +331,7 @@ function App() {
               <div className="flex justify-between items-start mb-4">
                 <div>
                   <h3 className="text-xl font-semibold text-white">
-                    Junior Java Developer
+                    Java Software Developer
                   </h3>
                   <p className="text-orange-500">
                     Cyperts Digital Solution Pvt Ltd
@@ -561,6 +561,10 @@ function App() {
                 <li>• JPA/Hibernate</li>
                 <li>• RESTful APIs</li>
                 <li>• Webservices</li>
+                <li>• Microservices</li>
+                <li>• Websockect</li>
+                <li>• Redis</li>
+                <li>• Jenkins</li>
               </ul>
             </div>
 
@@ -573,6 +577,7 @@ function App() {
               <ul className="space-y-2 text-gray-300">
                 <li>• PostgreSQL</li>
                 <li>• MySQL</li>
+                <li>• GraphQL</li>
 
                 <li>• Database Design</li>
               </ul>
@@ -586,6 +591,7 @@ function App() {
               </h3>
               <ul className="space-y-2 text-gray-300">
                 <li>• Git</li>
+                <li>• GitHub Actions</li>
               </ul>
             </div>
           </div>
