@@ -14,6 +14,7 @@ import {
   Award,
   FileDown,
   PhoneCall,
+  School,
 } from "lucide-react";
 import lawTech from "./assets/lawtech.jpeg";
 import Trendads from "./assets/Trendads.jpeg";
@@ -310,7 +311,8 @@ function App() {
                 </div>
 
                 <div className="flex items-center gap-2 text-gray-300">
-                  <BookOpen className="text-orange-500" />
+{/*                   <BookOpen className="text-orange-500" /> */}
+                  <School color="#f97316" />
                   <span>Msc</span>
                 </div>
               </div>
