@@ -1,7 +1,25 @@
-import lawTech from "../assets/lawtech.jpeg";
-import Trendads from "../assets/Trendads.jpeg";
+import lawTech from "./assets/lawtech.jpeg";
+import Trendads from "./assets/Trendads.jpeg";
+import Adsmanager from "./assets/Adsmanager.jpeg";
+import CRM from "./assets/CRM.jpeg";
 
 export const PROJECTS_DATA = [
+{
+    id: 5,
+    title: "WDC CRM (Customer Relationship Management)",
+    description: "Enterprise CRM solution featuring automated lead distribution, intelligent task assignment workflows, and dynamic sales pipeline analytics with cross-team collaboration tools.",
+    image: CRM,
+    technologies: [
+      "Spring Boot",
+      "PostgreSQL",
+      "Spring Security",
+      "Spring data Jpa",
+      "Jwt",
+      "Git",
+      "Hibernate"
+    ],
+    liveUrl: "https://crm.propertysearch.ai/",
+  },
   {
     id: 1,
     title: "TrendAds",
@@ -34,6 +52,23 @@ export const PROJECTS_DATA = [
     ],
     liveUrl: "https://db-lawtech.in/",
   },
+   {
+    id: 4,
+    title: "WDC Ads Manager Platform",
+    description: "Advanced advertising platform with intelligent campaign orchestration, precision audience segmentation, real-time performance analytics, and seamless payment gateway integration.",
+    image: Adsmanager,
+    technologies: [
+      "Spring Boot",
+      "PostgreSQL",
+      "Spring Security",
+      "Spring data Jpa",
+      "Jwt",
+      "Git",
+      "Hibernate",
+      "Cashfree API"
+    ],
+    liveUrl: "https://ads.propertysearch.ai/",
+  },
   {
     id: 3,
     title: "Cash Flow Generation Tool",
@@ -51,4 +86,5 @@ export const PROJECTS_DATA = [
     ],
     liveUrl: null, // No live URL available
   }
+  
 ];
